@@ -12,12 +12,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/goodeggs/mongorestore"
+    "url": "https://github.com/goodeggs/mongohq-pull"
   },
   "author": "Max Edmands",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/goodeggs/mongorestore/issues"
+    "url": "https://github.com/goodeggs/mongohq-pull/issues"
   },
   "devDependencies": {
     "mocha": "~1.14.0",
