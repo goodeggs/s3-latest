@@ -8,7 +8,7 @@
     "pretest": "./node_modules/.bin/coffee --bare --compile index.coffee"
   },
   "bin": {
-    "mongopull": "./index.js"
+    "mongopull": "./bin/mongopull"
   },
   "repository": {
     "type": "git",
