@@ -2,10 +2,10 @@
   "name": "mongohq-pull",
   "version": "0.1.1",
   "description": "Downloads and restores a dump from mongohq stored in s3",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "mocha --compilers coffee:coffee-script test/*.spec.coffee",
-    "pretest": "./node_modules/.bin/coffee --bare --compile index.coffee"
+    "pretest": "./node_modules/.bin/coffee --bare --output lib/ --compile src/*.coffee"
   },
   "bin": {
     "mongopull": "./bin/mongopull"
