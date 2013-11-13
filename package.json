@@ -1,0 +1,35 @@
+{
+  "name": "mongohq-pull",
+  "version": "0.1.0",
+  "description": "Downloads and restores a dump from mongohq stored in s3",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --compilers coffee:coffee-script test/*.spec.coffee",
+    "pretest": "./node_modules/.bin/coffee --bare --compile index.coffee"
+  },
+  "bin": {
+    "mongopull": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/goodeggs/mongorestore"
+  },
+  "author": "Max Edmands",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/goodeggs/mongorestore/issues"
+  },
+  "devDependencies": {
+    "mocha": "~1.14.0",
+    "coffee-script": "~1.6.3"
+  },
+  "dependencies": {
+    "aws-sdk": "~1.12.0",
+    "convict": "~0.4.1",
+    "fibrous": "~0.3.2",
+    "lazy.js": "~0.2.1",
+    "progress": "~1.1.2",
+    "through": "~2.3.4",
+    "optimist": "~0.6.0"
+  }
+}
