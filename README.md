@@ -6,6 +6,6 @@ There are probably other uses.
 
 Instructions:
 
-1. Put `AWS_ACCESS_KEY` and `AWS_SECRET_ACCESS_KEY` in your `.profile`.
+1. Put `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` in your `.profile`.
 2. `npm install -g s3-latest`
 3. `s3-latest --bucket bucketname | tar -xzv`
