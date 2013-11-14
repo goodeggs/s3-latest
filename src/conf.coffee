@@ -17,10 +17,12 @@ confSchema =
   access_key:
     doc: "Your AWS access key"
     env: "AWS_ACCESS_KEY"
+    format: "*"
     default: null
   secret:
     doc: "Your AWS access key secret"
     env: "AWS_SECRET_ACCESS_KEY"
+    format: "*"
     default: null
 
 helpAndQuit = ->
