@@ -15,8 +15,8 @@ confSchema =
     env: "AWS_S3_PREFIX"
     arg: "prefix"
   access_key:
-    doc: "Your AWS access key"
-    env: "AWS_ACCESS_KEY"
+    doc: "Your AWS access key ID"
+    env: "AWS_ACCESS_KEY_ID"
     format: "*"
     default: null
   secret:
@@ -56,3 +56,5 @@ try
 catch e
   helpAndQuit()
 
+for key, val of confSchema
+  helpAndQuit() unless val.default? or conf.get(key)?
