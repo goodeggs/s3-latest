@@ -8,6 +8,12 @@ confSchema =
     default: null
     env: "AWS_S3_BUCKET"
     arg: "bucket"
+  prefix:
+    doc: "Filter items by names starting with this string"
+    format: "*"
+    default: ""
+    env: "AWS_S3_PREFIX"
+    arg: "prefix"
   access_key:
     doc: "Your AWS access key"
     env: "AWS_ACCESS_KEY"
