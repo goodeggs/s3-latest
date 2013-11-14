@@ -27,7 +27,10 @@ confSchema =
 
 helpAndQuit = ->
   pkgInfo = require '../package.json'
-  help = [ pkgInfo.description ]
+  help = [
+    pkgInfo.description
+    "--version Print out current version and exit"
+  ]
   for key, val of confSchema
     line = "[env: #{val.env}] #{val.doc}"
     line = "--#{val.arg} #{line}" if val.arg?
