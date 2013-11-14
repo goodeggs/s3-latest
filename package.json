@@ -1,23 +1,23 @@
 {
-  "name": "mongohq-pull",
+  "name": "s3-latest",
   "version": "0.1.1",
-  "description": "Downloads and restores a dump from mongohq stored in s3",
+  "description": "Pull down the most recent item in an Amazon S3 bucket.",
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha --compilers coffee:coffee-script test/*.spec.coffee",
     "pretest": "./node_modules/.bin/coffee --bare --output lib/ --compile src/*.coffee"
   },
   "bin": {
-    "mongopull": "./bin/mongopull"
+    "s3-latest": "./bin/s3-latest"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/goodeggs/mongohq-pull"
+    "url": "https://github.com/goodeggs/s3-latest"
   },
   "author": "Max Edmands",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/goodeggs/mongohq-pull/issues"
+    "url": "https://github.com/goodeggs/s3-latest/issues"
   },
   "devDependencies": {
     "mocha": "~1.14.0",
