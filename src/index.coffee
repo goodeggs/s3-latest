@@ -1,6 +1,4 @@
 fibrous = require 'fibrous'
-progress = require 'progress'
-through = require 'through'
 
 conf = require './conf'
 finder = require './backup_finder'
