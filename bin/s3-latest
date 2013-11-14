@@ -1,2 +1,6 @@
 #!/usr/bin/env node
-require('../');
+
+var conf = require('../lib/conf');
+var getLatestS3ObjectStream = require('../');
+
+getLatestS3ObjectStream(conf.get('bucket'), conf.get('prefix')).pipe(process.stdout);

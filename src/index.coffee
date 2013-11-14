@@ -1,13 +1,12 @@
-fibrous = require 'fibrous'
-
-conf = require './conf'
 finder = require './backup_finder'
+through = require 'through'
 s3 = require './s3'
 
-(fibrous ->
-  mostRecent = finder.getMostRecentBackup.sync conf.get('bucket'), conf.get('prefix')
-  s3.getObject(Bucket: conf.get('bucket'), Key: mostRecent.Key).createReadStream().pipe process.stdout
-  return
-) (err, response) ->
-  throw err if err?
-  console.log response if response?
+module.exports = (bucket, prefix) ->
+  stream = through()
+  finder.getMostRecentBackup bucket, prefix, (err, mostRecent) ->
+    if err?
+      console.error err.toString()
+      stream.end()
+    s3.getObject(Bucket: bucket, Key: mostRecent.Key).createReadStream().pipe stream
+  stream
