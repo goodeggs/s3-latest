@@ -1,6 +1,18 @@
 #!/usr/bin/env node
 
 var conf = require('../lib/conf');
-var getLatestS3ObjectStream = require('../');
+var S3Latest = require('../');
 
-getLatestS3ObjectStream(conf.get('bucket'), conf.get('prefix')).pipe(process.stdout);
+var stream = S3Latest({
+  bucket: conf.get('bucket'),
+  prefix: conf.get('prefix'),
+  before: conf.get('before')
+});
+
+stream.on('error', function(err) {
+  console.error(err.toString());
+  process.exit(1);
+});
+
+stream.pipe(process.stdout);
+
