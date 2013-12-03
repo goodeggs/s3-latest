@@ -26,7 +26,7 @@ S3Latest(configuration).pipe(process.stdout);
 S3Latest(configuration, function(err, backup) {
   var fs = require('fs');
   if(err) return console.error(err.toString());
-  backup.pipe(fs.createWriteStream(backup.key));
+  backup.pipe(fs.createWriteStream(backup.Key));
 });
 
 ```
@@ -38,3 +38,13 @@ These can be passed in as command line options or as keys to the configuration o
 - `--bucket`: S3 bucket name
 - `--prefix`: String to search for files with. Needs to be at the beginning of the key. Usually used for s3 folder names.
 - `--before`: A date (or a [`moment.js`-compatible string representation of a date](http://momentjs.com/docs/#/parsing/string/)). Returns the latest object in the bucket after this date.
+
+## S3 Object details
+
+When using the api with option 2 (see above), you can access the following information about the latest S3 object: 
+
+- `Owner`: `{ID: '<< AWS IAM User id>>', DisplayName: '<< AWS IAM Display Name >>'}`
+- `Size`: size of the object in bytes
+- `ETag`: version information
+- `LastModified`: timestamp
+- `Key`: S3 Key
