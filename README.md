@@ -1,5 +1,7 @@
 # s3-latest
 
+[![NPM](https://nodei.co/npm/s3-latest.png)](https://nodei.co/npm/s3-latest/)
+
 A teeny tiny utility that retrieves the latest item in an Amazon S3 bucket.
 Designed as a great way to get the most recent backup of something.
 There are probably other uses.
