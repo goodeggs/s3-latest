@@ -3,7 +3,7 @@
 var conf = require('../lib/conf');
 var S3Latest = require('../');
 
-var stream = S3Latest({
+var stream = S3Latest.stream({
   bucket: conf.get('bucket'),
   prefix: conf.get('prefix'),
   before: conf.get('before')
