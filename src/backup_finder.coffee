@@ -1,16 +1,21 @@
 moment = require 'moment'
+minimatch = require 'minimatch'
 lazy = require 'lazy.js'
 s3 = require './s3'
 
 maxRequestCount = 10
 
 module.exports =
-  getMostRecentBackup: (bucket, prefix, before, callback) ->
+  getMostRecentBackup: (bucket, prefix, before, glob, callback) ->
+
+    # use glob base as prefix if no prefix was provided
+    [prefix] = glob.split('**', 1) if !prefix? and glob? and '**' in glob
+
     defaults = (options) ->
       lazy(options or {})
         .defaults(
           Bucket: bucket
-          Prefix: prefix
+          Prefix: prefix ? ''
         ).toObject()
 
     requestCount = 0
@@ -28,6 +33,8 @@ module.exports =
       object = lazy(objects?.Contents or [])
         .filter (object) ->
           moment(object.LastModified).isBefore before
+        .filter (object) ->
+          if glob? then minimatch(object.Key, glob) else true
         .max('LastModified')
       callback(new Error "Could not find any objects in bucket #{JSON.stringify(bucket)} with prefix #{JSON.stringify(prefix)} modified before #{moment(before).format('dddd, MMMM Do YYYY, h:mm:ss a ZZ')}") unless object?
       callback null, object

@@ -2,9 +2,9 @@ finder = require './backup_finder'
 s3 = require './s3'
 
 module.exports =
-  stream: ({bucket, prefix, before}, callback) ->
+  stream: ({bucket, prefix, before, glob}, callback) ->
     stream = require('through')()
-    finder.getMostRecentBackup bucket, prefix, before, (err, mostRecent) ->
+    finder.getMostRecentBackup bucket, prefix, before, glob, (err, mostRecent) ->
       if err?
         callback(err) if callback?
         stream.emit 'error', err
@@ -15,8 +15,8 @@ module.exports =
       callback(null, stream) if callback?
     stream
 
-  downloadUrl: ({bucket, prefix, before}, callback) ->
-    finder.getMostRecentBackup bucket, prefix, before, (err, mostRecent) ->
+  downloadUrl: ({bucket, prefix, before, glob}, callback) ->
+    finder.getMostRecentBackup bucket, prefix, before, glob, (err, mostRecent) ->
       callback(err) if err?
       s3.getSignedUrl 'getObject', {Bucket: bucket, Key: mostRecent.Key}, (err, url) ->
         mostRecent.signedUrl = url
